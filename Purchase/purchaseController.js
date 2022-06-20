@@ -2,7 +2,7 @@ const dbConnection = require('../dbConnection');
 
 
 //create
-const insertPurcase = ((req,res)=>{
+const insertPurchase = ((req,res)=>{
     let productId = req.body.id;
     let purchase_amount = req.body.amount;
 
@@ -54,4 +54,4 @@ const purchaseDelete = ((req,res)=>{
 
 
 
-module.exports = {insertPurcase,purchase,purchaseDelete}
+module.exports = {insertPurchase,purchase,purchaseDelete}

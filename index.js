@@ -3,7 +3,7 @@ const dbConnection = require('./dbConnection')
 
 const userRouter = require('./User/userRoute');
 const productRouter = require('./Product/productRoute');
-
+const purchaseRouter = require('./Purchase/purchaseRoute')
 const app = express();
 
 var bodyParser = require('body-parser')
