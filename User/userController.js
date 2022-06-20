@@ -1,14 +1,15 @@
 const dbConnection = require('../dbConnection');
-
+const moment = require('moment')
 
 //create
 const insertUser = ((req,res)=>{
     let username = req.body.name;
     let useremail = req.body.email;
+    var timeStamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
 
     console.log(username,'username');
 
-    let qr = `insert into user(user_name,user_email) values('${username}','${useremail}')`;
+    let qr = `insert into user(user_name,user_email,oncreate,onupdate) values('${username}','${useremail}','${timeStamp}','${timeStamp}')`;
 
     dbConnection.query(qr,(err,result)=>{
         if(err){
@@ -38,11 +39,13 @@ const users = ((req,res)=>{
 const userUpdate = ((req,res)=>{
     let username = req.body.name;
     let useremail = req.body.email;
-    let id = req.body.id;
+    let id = req.params.id;
+    var timeStamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
 
-    let qr = `update user set user_name='${username}, user_email=${useremail} where user_id='${id}'`;
+    let qr = `update user set user_name='${username}', user_email='${useremail}', onupdate='${timeStamp}'  where user_id='${id}'`;
     dbConnection.query(qr,(err,result)=>{
         if(err){
+            console.log(err);
             res.send({error:"updation failed"})
         }else{
             res.send({success:"updation success"})

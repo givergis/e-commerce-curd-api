@@ -24,6 +24,7 @@ dbConnection.connect((err)=>{
 
 app.use('/User',userRouter)
 app.use('/Product',productRouter)
+app.use('/Purchase',purchaseRouter)
 
 
 
